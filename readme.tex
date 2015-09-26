@@ -1,0 +1,41 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{kpfonts}
+
+\usepackage{hyperref}
+
+\hypersetup{urlcolor=blue}
+
+\title{Coursera Developing Data Products class\\ Course project\\Documentation}
+\author{}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introduction*}
+This brief document is the supporting documentation for the shiny application to be deployed as part of the Coursera class "Developing Data Products". The app is deployed on the Shiny web server, reachable at the following \href{https://pgrandinetti.shinyapps.io/shinyApp}{link}. In the next sections there will be explained the app features and how to use it.
+
+\section{Scenario}
+Recently git has got a new user, Pete. Pete is a long--time software developer, but, for some reason, mainly because he has developed one--man projects, he has never heard speaking about git.
+
+Now, thanks to the specialization on Coursera, he learnt about that. But he is still wondering if he should really upload all of his projects (and they are a lot) on the github.
+
+So, Pete needs our help!
+
+\section*{How to use the application}
+The usage of the app is extremely intuive. A sidebar panel, on the left, tells us the story in short, and invite us to give some suggestions to Pete about his dilemma. In the same panel there are also the choices. The reader is kindly invited to give his own advice!
+
+On the right, a "barplot" (in the sense of R function), show the historical results. This means that every user can see what the others have voted before than him\footnote{Technical tips: this is achieved with the assignment of variables in the right scope. Check out the code!}.
+
+In this way, Pete will be able to retrieve suggestions from everybody, and eventually make a choice!
+
+\section*{Note for the user}
+To avoid you being biased by others opinion, you will be able to see the total votes only after you have voted!
+
+In any case is possible to vote more than once.
+\end{document}
