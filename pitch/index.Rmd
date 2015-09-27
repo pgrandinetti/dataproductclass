@@ -20,7 +20,7 @@ knit        : slidify::knit2slides
 
 	+ He has developed a Shiny App in order to collect suggestions from his Coursera classmate
 
---- .class #id 
+--- 
 
 ## How to use the Shiny App
 - Reach the following link with your browser https://pgrandinetti.shinyapps.io/shinyApp
