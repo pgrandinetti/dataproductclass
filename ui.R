@@ -1,4 +1,7 @@
+
 library(shiny)
+
+# There will be a left panel with the instructions and a right panel with two tabs, one for the results and one for the documentation
 shinyUI(fluidPage(
   titlePanel("Hello, there!"),
   sidebarPanel(
@@ -14,8 +17,16 @@ shinyUI(fluidPage(
     width = 8
   ),
   mainPanel(
-    h3("Here is your opinions!"),
-    plotOutput('bar'),
-    width = 4
+	tabsetPanel(
+		tabPanel("Results",
+    			h3("Here is your opinions!"),
+    			plotOutput('bar')
+		),
+		tabPanel("Documentation",
+			h5("The usage of the app is extremely intuive. A sidebar panel, on the left, tells us the 				story in short, and invite us to give some suggestions to Pete about his dilemma. In the same panel there 				are also the choices. The reader is kindly invited to give his own advice! On the right, a barplot (in the sense of R function), show the historical results. This means that every user can see what the others have voted before than him. In a second tab is shown a short version of the documentation, and the link to the pdf documentation."),
+			a("clik here for the full documentation!", href="https://github.com/pgrandinetti/dataproductclass/blob/master/readme.pdf")
+		)
+	),
+    	width = 4
   )
 ))
