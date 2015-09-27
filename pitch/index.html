@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recommender Shiny App</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Recommender Shiny App">
+  <meta name="author" content="Coursera Fellow - Developing Data Product class">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Recommender Shiny App</h1>
+    <h2>Are you pro or against git?</h2>
+    <p>Coursera Fellow - Developing Data Product class<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Scenario</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Pete is a young programmer who, thanks to Coursera and Data Science specialization, has just discovered git</li>
+<li>In the past years Pete has written a lot of code, for various reasons; mostly for fun!</li>
+<li><p>All of Pete&#39;s projects were one-man projects, so he actually wonders whether move all his codes within github or not</p>
+
+<ul>
+<li>Pete asks for our help!</li>
+<li>He has developed a Shiny App in order to collect suggestions from his Coursera classmate</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>How to use the Shiny App</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Reach the following link with your browser <a href="https://pgrandinetti.shinyapps.io/shinyApp">https://pgrandinetti.shinyapps.io/shinyApp</a></li>
+<li><p>The app explains by itself!</p>
+
+<ul>
+<li>You will read the instruction on the left</li>
+<li>If you prefer, there is a short explanation in the tab Documentation, on the right</li>
+<li>If it is not enough for you, in the same tab there is also the link to the complete pdf documentation!</li>
+</ul></li>
+<li><p>Select your preference. What is your advice for Pete?</p></li>
+<li><p>Then submit it! You will see the results!</p>
+
+<ul>
+<li>The app stores all of the received submissions, so that Pete can see all advices. But it does so only for 6 hours (Pete sets this idle time in the Shiny server). He hopes it is enough!</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Technical tips</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Pete thinks it is nice that his App can remember values from all submissions</li>
+<li>To do so, he had to use the correct scope</li>
+</ul>
+
+<pre><code class="r">#take the submitted value from the &#39;id2&#39;
+value &lt;- as.numeric(input$id2)
+# update the history
+values[value] &lt;&lt;- values[value] + 1 #that&#39;s the trick!
+</code></pre>
+
+<ul>
+<li>Also, the App is <em>event reactive</em></li>
+</ul>
+
+<pre><code class="r"># datainput will later became the plot
+datainput &lt;- eventReactive(
+    # place your reactive code here!
+)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Visualizing the result</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>After some thinking Pete has chosen a <code>barplot</code> visualization</li>
+<li><p>Let&#39;s assume the <code>values</code> variable given by the datainput function (see previous slide) contains the following</p>
+
+<ul>
+<li>Yes = 1 vote, No = 0 vote, Maybe = 2 votes, What are your waiting? = 6 votes</li>
+</ul></li>
+<li><p>Then it will run</p></li>
+</ul>
+
+<pre><code class="r">barplot(values,names.arg = c(&#39;Yes&#39;,&#39;No&#39;,&#39;Maybe&#39;,&#39;WAYW?&#39;),ylim = c(0,10))
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Scenario'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='How to use the Shiny App'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Technical tips'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Visualizing the result'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
